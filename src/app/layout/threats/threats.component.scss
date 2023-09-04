@@ -1,0 +1,28 @@
+mat-grid-tile {
+    background: lightblue;
+}
+div.description{
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.mat-icon{
+  height: 20px !important;
+}
+.material-icons{
+  font-size: 18px !important;
+}
+.data-div{
+  height: 84%;
+}
+.botton-div{
+  // position: relative;
+  // bottom: -25px;
+}
+.search-div{
+    position: sticky;
+    top: 45px;
+    z-index: 1;
+    background-color: white;
+}

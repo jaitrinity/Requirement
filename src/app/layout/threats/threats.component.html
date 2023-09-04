@@ -1,0 +1,87 @@
+<div class="row" *ngIf="isInProgress">
+  <div class="col-md-12 text-center">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <h5 class="text-warning">Please wait...</h5>
+  </div>
+</div>
+<div class="row search-div">
+  <div class="col-md-12">
+    <!-- <select class="form-control" [(ngModel)]="uniqueSecurity" (change)="selectSecurity()">
+      <option value="">Select</option>
+      <option *ngFor="let us of uniqueSecurityList" value="{{us}}">{{us}}</option>
+    </select> -->
+    <ng-multiselect-dropdown [placeholder]="'Select'" [data]="uniqueSecurityList"
+      [(ngModel)]="selectedUniqueSecurity" [settings]="multiSelectdropdownSettings"
+      (onSelect)="onSelectOrDeselect($event)" (onDeSelect)="onSelectOrDeselect($event)"
+      (onSelectAll)="onSelectAllOrDeselectAll($event)" (onDeSelectAll)="onSelectAllOrDeselectAll($event)">
+    </ng-multiselect-dropdown>
+  </div>
+</div>
+<div class="row" *ngIf="onLoad">
+  <!-- <div class="col-md-12">
+    {{threatsList.length}}
+  </div> -->
+  <div class="col-md-12">
+    <mat-grid-list cols="3" rowHeight="2:1" >
+      <mat-grid-tile *ngFor="let td of threatsList">
+        <!-- <div>Id : {{td.Id}}</div> -->
+        <div class="data-div">
+          <div><b>Threat Name</b> : {{td.ThreatName}}</div>
+          <div><b>Source Name</b> : {{td.SourceName}}</div>
+          <div><b>Risk</b> : {{td.ActualRiskName}}</div>
+          <div><b>Status</b> : {{td.StatusName}}</div>
+          <div><b>Project Id</b> : {{td.ProjectId}}</div>
+          <div><b>No. Of Security Requirements</b> : {{td.SecurityRequirements.length}}</div>
+          <div class="description"><b>Description</b> : {{td.Description | striphtml}}</div>
+        <!-- <div class="description">Description : <span [innerHTML]="td.Description"></span></div> -->
+        </div>
+        <div class="botton-div">
+          <button mat-raised-button (click)="expandThreats(td)" matTooltip="Expand">
+            <mat-icon>open_in_new</mat-icon> Expand
+           </button> &nbsp;
+          <!-- <button cdkCopyToClipboard="{{td.ThreatName}}-{{td.SourceName}}">Copy to clipboard</button> -->
+          <button mat-raised-button (click)="copyToClipboard(td)" matTooltip="Copy to clipboard" 
+          style="float: right;">
+            <mat-icon>file_copy</mat-icon> Copy
+           </button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
+</div>
+
+<div class="row" *ngIf="onSelect">
+  <!-- <div class="col-md-12">
+    {{onSelectThreatsList.length}}
+  </div> -->
+  <div class="col-md-12">
+    <mat-grid-list cols="3" rowHeight="2:1" >
+      <mat-grid-tile *ngFor="let td of onSelectThreatsList">
+         <!-- <div>Id : {{td.Id}}</div> -->
+         <div class="data-div">
+          <div><b>Threat Name</b> : {{td.ThreatName}}</div>
+          <div><b>Source Name</b> : {{td.SourceName}}</div>
+          <div><b>Risk</b> : {{td.ActualRiskName}}</div>
+          <div><b>Status</b> : {{td.StatusName}}</div>
+          <div><b>Project Id</b> : {{td.ProjectId}}</div>
+          <div><b>No. Of Security Requirements</b> : {{td.SecurityRequirements.length}}</div>
+          <div class="description"><b>Description</b> : {{td.Description | striphtml}}</div>
+        <!-- <div class="description">Description : <span [innerHTML]="td.Description"></span></div> -->
+        </div>
+        <div class="botton-div">
+          <button mat-raised-button (click)="expandThreats(td)" matTooltip="Expand">
+            <mat-icon>open_in_new</mat-icon> Expand
+           </button> &nbsp;
+          <!-- <button cdkCopyToClipboard="{{td.ThreatName}}-{{td.SourceName}}">Copy to clipboard</button> -->
+          <button mat-raised-button (click)="copyToClipboard(td)" matTooltip="Copy to clipboard" 
+          style="float: right;">
+            <mat-icon>file_copy</mat-icon> Copy
+           </button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+    
+</div>
+  

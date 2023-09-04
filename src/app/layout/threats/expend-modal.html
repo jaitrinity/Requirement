@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{expendData.Id}}</h1>
+<div mat-dialog-content>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ThreatName</th> <th>SourceName</th> <th>ActualRiskName</th> <th>StatusName</th>
+                <th>ProjectId</th> <th>Description</th> 
+            </tr>
+            <tr>
+                <td>{{expendData.ThreatName}}</td> <td>{{expendData.SourceName}}</td> <td>{{expendData.ActualRiskName}}</td> 
+                <td>{{expendData.StatusName}}</td>
+                <td>{{expendData.ProjectId}}</td> <td [innerHTML]="expendData.Description"></td> 
+            </tr>
+        </thead>
+    </table>
+
+    <div *ngIf="expendData.noOfSecurityRequirement != 0">
+        <h1>SecurityRequirements</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th> <th>Name</th> <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sr of expendData.SecurityRequirements">
+                    <td>{{sr.Id}}</td> <td>{{sr.Name}}</td> <td [innerHTML]="sr.Description"></td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Close</button>
+</div>

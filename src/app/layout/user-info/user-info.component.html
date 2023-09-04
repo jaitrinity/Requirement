@@ -1,0 +1,28 @@
+<div class="row" *ngIf="isInProgress">
+    <div class="col-md-12 text-center">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <h5 class="text-warning">Please wait...</h5>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th> <th>Username</th> 
+                        <th>Email id</th> <th>Last Login</th>
+                        <th>Department</th> <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{userData.Name}}</td> <td>{{userData.Username}}</td> 
+                        <td>{{userData.Email}}</td> <td>{{userData.LastLogin}}</td>
+                        <td>{{userData.UserDepartmentName}}</td> <td>{{userData.UserRoleName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

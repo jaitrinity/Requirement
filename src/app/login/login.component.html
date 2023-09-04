@@ -1,0 +1,96 @@
+
+<div class="login-container">
+    <div class="row" *ngIf="isInProgress">
+        <div class="col-md-12 text-center">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          <h5 class="text-warning">Please wait...</h5>
+        </div>
+    </div>
+    <div class="login-page">
+        <div class="left-content">
+            <div class="row">
+                <div class="col-md-12 text-center" style="padding: 110px 0px">
+                    <img src="assets/img/ThreatModeler-Logo.png"/>
+                </div>
+            </div>
+            
+        </div>
+        <div class="right-content">
+            <div class="MainForm">
+                <form #LoginForm="ngForm" (ngSubmit)='OnSubmitting()'>
+                    <div class="FormInputFields">
+                        <h1>User Login</h1>
+                        <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+                            <mat-label>Username</mat-label>
+                            <input [(ngModel)]="loginModel.username" name="username" matInput placeholder="Username" required
+                                #uname='ngModel'>
+                            <mat-error *ngIf="uname.touched && uname.invalid">
+                                Username is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="loginModel.password" name="password" matInput
+                                [type]="hide ? 'password' : 'text'" placeholder="Enter Password" required #pass='ngModel'>
+                            <mat-error *ngIf="pass.touched && pass.invalid">
+                                password is <strong>required</strong>
+                            </mat-error>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-error *ngIf="invalid">
+                            INVALID <strong>Username</strong> or <strong>Password</strong>
+                        </mat-error>
+                        <!-- <label (click)="openForgetPasswordModel()"
+                            style="color: #4a148c;font-weight: 700;float:right;cursor: pointer;text-decoration: underline;margin-bottom: 15px">
+                            Forget Password ?
+                        </label> -->
+                        <div style="text-align: end;">
+                            <button mat-raised-button [disabled]='LoginForm.form.invalid'
+                                [class.Activebutton]='!LoginForm.form.invalid'>
+                                Login
+                            </button>
+                        </div>
+    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <form #LoginForm = "ngForm" (ngSubmit)='OnSubmitting()'>
+    <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+        <mat-label>Mobile</mat-label>
+        <input [(ngModel)]="loginModel.username" name="username" matInput placeholder="Mobile" required #uname='ngModel'>
+        <mat-error *ngIf="uname.touched && uname.invalid">
+            Mobile is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy" color="primary" hideRequiredMarker>
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="loginModel.password" name="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Enter Password" required #pass='ngModel'>
+        <mat-error *ngIf="pass.touched && pass.invalid">
+            password is <strong>required</strong>
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-error *ngIf="invalid">
+        INVALID <strong>Username</strong> or <strong>Password</strong>
+    </mat-error>
+    <label (click)="openForgetPasswordModel()" class="text-bold" style="float:right;cursor: pointer;text-decoration: underline;margin-bottom: 15px">
+        Forget Password ?
+    </label>
+    <div style="text-align: start;">
+        <button mat-raised-button [disabled]='LoginForm.form.invalid' [class.Activebutton]='!LoginForm.form.invalid'>
+            Login
+        </button>
+    </div>
+
+</form> -->

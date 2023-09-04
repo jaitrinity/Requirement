@@ -1,0 +1,41 @@
+<div class="page">
+    <header class="header" style="position: fixed;top:0;display: block;width: 100%;z-index: 1000;">
+        <mat-toolbar>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+             <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-button [routerLink]="userInfoPageLink" [routerLinkActive]="['active']">User Info</button>
+            <button mat-button [routerLink]="threatsPageLink" [routerLinkActive]="['active']">Threats</button>
+            <span class="example-spacer"></span>
+            <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Name : {{userData.Username}}</button>
+                <button mat-menu-item>Last Login : {{userData.LastLogin}} </button>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+        </mat-toolbar>
+        <!-- <nav class="navbar" style="padding-top: 0px;padding-bottom: 0px;">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header">
+                        <div class="navbar-header">
+                            <a href="javascript:void(0)" [routerLink]="threatsPageLink">Threats</a>
+                            <a href="javascript:void(0)" [routerLink]="userInfoPageLink">User Info</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </nav> -->
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+        <div class="content-inner" style="width: calc(100% - 0px);margin-top: 45px">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- <div style="width: 100%; position: fixed;bottom: 0;text-align: center;background:#2E57A7;font-weight: 400;color:white">
+        &copy; Trinity Mobile App Lab Private Limited.
+    </div> -->
+</div>
