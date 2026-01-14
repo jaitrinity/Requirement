@@ -36,5 +36,5 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/requirement:latest
           docker stop requirement || true
           docker rm requirement || true
-          docker run -d -p 8080:80 --name requirement \
+          docker run -d -p 8081:80 --name requirement \
             ${{ secrets.DOCKER_USERNAME }}/requirement:latest
